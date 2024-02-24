@@ -1,45 +1,22 @@
-// import { useState, useEffect } from 'react';
-import Description from './Description/Description';
-import Options from './Options/Options';
-import Feedback from './Feedback/Feedback';
+import Profile from '../Profile/Profile';
+import userData from '../../userData.json';
+import FriendList from '../FriendList/FriendList';
+import friends from '../../friends.json';
+import TransactionHistory from '../TransactionHistory/TransactionHistory';
+import transactions from '../../transactions.json';
 
-// const App = () => {
-//   const [clicks, setClicks] = useState(() => {
-//     const savedClicks = window.localStorage.getItem('saved-clicks');
-//     if (savedClicks !== null) {
-//       return savedClicks;
-//     }
-//     return 0;
-//   });
-
-//   useEffect(() => {
-//     window.localStorage.setItem('saved-clicks', clicks);
-//   }, [clicks]);
-
-//   return (
-//     <div>
-//       <button onClick={() => setClicks(clicks + 1)}>
-//         You clicked {clicks} times
-//       </button>
-//       <button onClick={() => setClicks(0)}>Reset</button>
-//     </div>
-//   );
-// };
 const App = () => {
-  const condition = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
   return (
     <>
-      <Description />
-      <Options
-        good={condition.good}
-        neutral={condition.neutral}
-        bad={condition.bad}
+      <Profile
+        name={userData.username}
+        tag={userData.tag}
+        location={userData.location}
+        image={userData.avatar}
+        stats={userData.stats}
       />
-      <Feedback />
+      <FriendList friends={friends} />
+      <TransactionHistory items={transactions} />
     </>
   );
 };
